@@ -1,0 +1,44 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Literature Survey}{3}
+\contentsline {section}{\numberline {2.1}Visualizing a Workspace}{3}
+\contentsline {subsection}{\numberline {2.1.1}Color Based}{4}
+\contentsline {subsection}{\numberline {2.1.2}Geometery Based}{4}
+\contentsline {subsection}{\numberline {2.1.3}Feature Based}{4}
+\contentsline {section}{\numberline {2.2}Path Planning}{5}
+\contentsline {subsection}{\numberline {2.2.1}Potential Fields}{5}
+\contentsline {subsection}{\numberline {2.2.2}Graph Search}{6}
+\contentsline {section}{\numberline {2.3}Dijkstra's Algorithm}{6}
+\contentsline {section}{\numberline {2.4}Greedy Algorithm}{7}
+\contentsline {section}{\numberline {2.5}A*}{7}
+\contentsline {chapter}{\numberline {3}Kinematics}{8}
+\contentsline {section}{\numberline {3.1}Forward Kinematics}{8}
+\contentsline {section}{\numberline {3.2}Inverse Kinematics}{10}
+\contentsline {chapter}{\numberline {4}Hardware}{13}
+\contentsline {chapter}{\numberline {5}Image Processing}{17}
+\contentsline {section}{\numberline {5.1}Creative Senz 3D}{17}
+\contentsline {section}{\numberline {5.2}Depthsense SDK}{17}
+\contentsline {section}{\numberline {5.3}Finding Depth Data at a Desired Location}{18}
+\contentsline {subsection}{\numberline {5.3.1}Point Cloud Library}{21}
+\contentsline {subsection}{\numberline {5.3.2}Open CV}{21}
+\contentsline {subsection}{\numberline {5.3.3}First Version}{21}
+\contentsline {subsection}{\numberline {5.3.4}Second Version}{22}
+\contentsline {chapter}{\numberline {6}Finding Ground Truth for a Mobile Platform}{26}
+\contentsline {section}{\numberline {6.1}First Solution}{26}
+\contentsline {section}{\numberline {6.2}Second Solution}{27}
+\contentsline {chapter}{\numberline {7}Path Planning}{30}
+\contentsline {section}{\numberline {7.1}Path Planning for the Manipulator}{30}
+\contentsline {chapter}{\numberline {8}Modeling}{32}
+\contentsline {chapter}{\numberline {9}Results}{35}
+\contentsline {chapter}{\numberline {10}Conclusion}{39}
+\contentsline {chapter}{\numberline {A}CameraCode}{41}
+\contentsline {section}{\numberline {A.1}Object Tracking Method 1}{41}
+\contentsline {section}{\numberline {A.2}Object Tracking Method 2}{44}
+\contentsline {chapter}{\numberline {B}Path Planning and Communication}{49}
+\contentsline {section}{\numberline {B.1}Main Code}{49}
+\contentsline {section}{\numberline {B.2}Computer Communication}{55}
+\contentsline {section}{\numberline {B.3}Micro Controller Communication}{57}
+\contentsline {section}{\numberline {B.4}Path Planner}{58}
+\contentsline {section}{\numberline {B.5}Kinematics}{61}
+\contentsline {chapter}{\numberline {C}Arm Code}{66}
+\contentsline {section}{\numberline {C.1}Main Code}{66}
+\contentsline {section}{\numberline {C.2}Arm Functions}{69}

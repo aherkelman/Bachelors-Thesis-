@@ -1,0 +1,18 @@
+\contentsline {chapter}{\numberline {1}Kinematics}{2}
+\contentsline {section}{\numberline {1.1}Forward Kinematics}{2}
+\contentsline {section}{\numberline {1.2}Inverse Kinematics}{3}
+\contentsline {chapter}{\numberline {2}Hardware}{5}
+\contentsline {chapter}{\numberline {3}Image Processing}{7}
+\contentsline {section}{\numberline {3.1}Creative Senz 3D}{7}
+\contentsline {section}{\numberline {3.2}Depthsense SDK}{7}
+\contentsline {section}{\numberline {3.3}Finding Depth Data at a Desired Location}{8}
+\contentsline {subsection}{\numberline {3.3.1}Point Cloud Library}{9}
+\contentsline {subsection}{\numberline {3.3.2}Open CV}{9}
+\contentsline {chapter}{\numberline {4}GMM Image Code}{11}
+\contentsline {chapter}{\numberline {5}Image Processing}{14}
+\contentsline {section}{\numberline {5.1}Graph Search}{14}
+\contentsline {section}{\numberline {5.2}Dijkstra's Algorithm}{14}
+\contentsline {section}{\numberline {5.3}Greedy Algorithm}{15}
+\contentsline {section}{\numberline {5.4}A*}{15}
+\contentsline {section}{\numberline {5.5}Path Planning for the Manipulator}{16}
+\contentsline {chapter}{\numberline {6}Modeling}{17}

@@ -1,0 +1,32 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Mobile Manipulator\relax }}{8}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The Mobile Manipulator with Coordinate Frames\relax }}{9}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Projections for solving the inverse kinematics geometrically.\relax }}{11}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Workspace of the manipulator \relax }}{12}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The manipulator.\relax }}{13}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces System diagram of the manipulator.\relax }}{14}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Diagram of manipulator control system.\relax }}{14}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Connection Circuit for Manipulator. \relax }}{15}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Gripper holding cylindrical object.\relax }}{16}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Arm with Camera Mounted Above.\relax }}{20}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Locating a blue object in camera image. \relax }}{23}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Shapes located in image, labeled by program.\relax }}{25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Solidworks model of GoPro mount.\relax }}{28}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces View of test area from GoPro.\relax }}{29}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Found path of mobile platform drawn on camera image.\relax }}{29}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Arm graphed onto 3D image in Matlab.\relax }}{32}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Path planning simulation in matlab.\relax }}{33}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Path planning model in V-REP.\relax }}{34}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Manipulator moving through a planned path. \relax }}{38}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

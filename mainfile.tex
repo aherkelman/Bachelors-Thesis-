@@ -1,0 +1,68 @@
+\documentstyle[epic,eepic,graphicx,cite,amsmath,caption,subcaption,algorithm,algorithmicx,algpseudocode,longtable,appendix,url,listings]{report}
+%\mathindent 0pt
+\input{epsf}
+
+
+\renewcommand{\baselinestretch}{1.6}
+\newtheorem{theorem}{Theorem}[chapter]
+\newcommand{\btheorem}{\begin{theorem}\rm}
+\newcommand{\etheorem}{$\diamond$\end{theorem}}
+\newtheorem{definition}{Definition}[chapter]
+\newcommand{\bdefn}{\begin{definition}\rm}
+\newcommand{\edefn}{\end{definition}}
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+\newcommand{\bremark}{\begin{remark}\rm}
+\newcommand{\eremark}{\end{remark}}
+\newtheorem{example}{Example}[chapter]
+\newcommand{\bexample}{\begin{example}\rm}
+\newcommand{\eexample}{\end{example}}
+\newtheorem{assumption}{Assumption}[chapter]
+\newcommand{\bassump}{\begin{assumption}\rm}
+\newcommand{\eassump}{\end{assumption}}
+\newcommand{\ekf}{Extended Kalman Filter }
+\newcommand{\slam}{Simultaneous Localization and Mapping }
+\newcommand{\imp}{Integrated Mobile Platform }
+\graphicspath{{./Images/hardware/}, {./Images/imageprocessing/}, {./Images/IMP/},{./Images/kinematics/},{./Images/modeling/},
+{./Images/pathplanning/},{./Images/results/}}
+%\newtagform{defaultoveride}{}{}
+%\usetagform{defaultoveride}
+\begin{document}
+\title{Path Planning and Object Detection for a Robotic Manipulator}
+\author{Alaina Herkelman}
+\maketitle
+%\mstitlepage
+\topmargin=0.4 in
+\textwidth=6.0 in
+\textheight=9.0 in
+
+
+\setcounter{page}{1}
+\pagenumbering{roman}
+\include{./Roman/publications}
+\include{./Roman/acknowledgements} 
+\include{abstract}
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\include{./Chapters/introduction}
+\include{./Chapters/survey}
+\include{./Chapters/kinematics}
+\include{./Chapters/hardware}
+\include{./Chapters/imageprocessing}
+\include{./Chapters/IMP}
+\include{./Chapters/pathplanning}
+\include{./Chapters/modeling}
+\include{./Chapters/results}
+\include{./Chapters/conclusion}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bibliography}
+\include{./Chapters/appendix}
+\include{./Chapters/bibliography}
+%\include{bib}
+\end{document}

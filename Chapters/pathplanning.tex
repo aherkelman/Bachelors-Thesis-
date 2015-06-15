@@ -1,0 +1,25 @@
+\chapter{Path Planning}
+The method selected for path planning was a graph search algorithm using A star (A*). The algorithm was first written and tested in Matlab and the rewritten to ne implemented on the real manipulator in python. 
+
+
+\section{Path Planning for the Manipulator}
+The first step of the path planning code was to find a way to discretize the workspace of the manipulator. The angle apace, $\theta_1, \theta_2, \theta_3,$ and $\theta_4$ was used, rather than the alternative of using the x,y,z,$\theta_c$ position coordinates. This choice was made so that each part of the found path would be guaranteed to be in the workspace of the manipulator. By changing the step between the manipulators rather than the position the trajectory is guaranteed to  be smooth since each angle will only be changed at most by a step size. Using the xyz position can results in large jumps between the angles to reach a small change in end effector position because of major configuration changes between them. To calculate the neighbors of the current node the angles are by a maximum of a set step size. 
+
+The obstacles were entered into the path planning algorithm by keeping track of the xyz position of the obstacle. No further definition was necessary. Rather than calculate the arm nodes which would cause a collision with the obstacle the position of it was used as a parameter of the total cost function for each node. The closer the position of the end effector to the obstacle the higher the cost to go to that position. This acts as a potential field pushing the arm away from the obstacles. With proper tuning the arm is able to avoid the obstacles while traveling to the goal. The obstacle cost was taken as 1/distance between the end effector position and the obstacle center. This cost was found and summed for each obstacle, then multiplied by a tuning parameter and added to the total cost.
+
+The A* algorithm was implemented to calculate the path of the arm. The total cost of each node was calculated by A* distance between start node and current node + B*distance between current node and goal node + C* 1/sum of distance between current node and each obstacle where A, B, and C are wights adjusted for best results. The algorithm for this is shown in Algorithm \ref{alg:cam}. It calculates the optimal path between a start position and end position while avoiding all inputted obstacles. Since the goal of this program is to pick up an object the path had to be separated into two different pieces.  The first considered the goal object as an obstacle to avoid colliding with it before picking it up and traveling to a point a about two inches away from the goal. At this point the gripper was opened and a new path calculated from the current position to the goal where the gripper was then closed and the object picked up. The code for the path planner is found in Appendix B.
+
+\begin{algorithm}
+	\begin{enumerate}
+		\item Add start position to the nodes to be looked at.
+		\item While still nodes to look at
+		\item Set node with lowest total cost as current node
+		\item Mark node as having been visited, save position this node came from.
+		\item If this node is within a small distance of goal position exit loop.
+		\item Calculate all neighbors of current nodes and their costs.
+		\item If node is within constraints and has not been visited already save to nodes to be looked at array.
+		\item Create path by using came from and visited arrays
+	\end{enumerate}
+\caption{Find world coordinates of a pixel coordinate}
+\label{alg:cam}
+\end{algorithm}

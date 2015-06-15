@@ -1,0 +1,64 @@
+\chapter{Literature Survey}
+
+Path planning is a way to generate a path for a robot to meet certain input conditions. It is often desired to move the robot from one place to another while going around any objects that may be in the way. The steps to do this can be broken into two major components: finding information about the workspace and using an algorithm to develop the path. 
+
+Path planning can be done in both static and dynamic environments. A static environment is one that does not change. Once the workspace has been visualized it is assumed none of the objects move. In a dynamic environment the surroundings of the robot do change. This means that the workspace information will change in position as the robot moves. It then becomes necessary to both visualize and plan a path simultaneously, requiring better speed and flexibility for both the path planner and vision methods.
+
+\section{Visualizing a Workspace}
+Generating data about a workspace requires some type of sensor, or sensors, which can provide data about the robot's surroundings. The most common methods for this involve vision sensors and distance sensors. The overall goal is to create some knowledge of the 3 dimensional workspace of the robot. Camera's are useful in locating obstacles but need some method to convert from pixels to real world coordinates. To locate a goal in an environment using computer vision requires some method of object recognition. There are a number of different methods and programming libraries to help with this problem. A few common methods are described below.
+
+\subsection{Color Based}  
+One method of finding on object in an image is based on color. The range of pixel values for a certain color can be saved to an algorithm that searched through an image to find pixel values within that color range. To create accurate data from this requires some amount of filtering and correction on the image to reduce the impact noise. The major downfall of this method is that the color must be known to find the object and if any objects, besides the desired, are in the same color range the results of the detection will not return the right data. This method is therefore most useful in controlled environments where the colors of objects in the image can be selected.
+
+\subsection{Geometery Based}
+An alternative to finding by color is finding by shape. The basic principle of this is to search through the edges of an image for geometric shapes. This can be done to find any primitive shapes in an image. A more complex shape can be broken into a combination of geometric primitives to be located using this method. To find a primitive shape in an image a method for edge detecting must be used. From found edges in the image these can be searched to find the contours matching the desired simple shape.
+
+\subsection{Feature Based}
+This method finds a known object in an image by comparing known 'features' of the object to an image. An algorithm is run to find distinctive parts of an object from a picture of it. These features are commonly lines, points, shapes but can be anything else generated. An array of these features can be saved and compared to features in another image. If enough of the object's features are found then the object is said to be found in the image. This method is a bit more complicated but works best for finding complex objects in a more cluttered environment.      
+
+\section{Path Planning}
+There are many different solutions that have been developed to solve the path planning problem. Two of the most popular are potential fields and graph search. These methods can be broken down into more specific algorithms but all share similar aspects.
+
+\subsection{Potential Fields}
+The potential fields method uses an equation to calculate the next step of the path by repelling the solution away from obstacles while attracting it to the goal. The equation acts as a cost function of which the global minimum is the goal. The cost will increase the closer the obstacles and the cost will decrease the closer to the goal. The cost functions is comprised of two parts; an attractive field and a repulsive field. 
+
+The shape of equation that directly solves the attractive field is a conical, which is a concave shape with the center at the goal. The problem with this equation is that it is not continuous which causes most optimization methods to be impossible. To fix this a quadratic equation, which increases the farther from the goal, is added to the conic equation. The resulting equation for the attractive field is shown in equation \ref{eq:attract}.
+\begin{equation}
+\label{eq:attract}
+ U_{attract}(q)  =
+  \begin{cases} 
+      \hfill \frac{1}{2}\zeta dist(q,q_0)^2    \hfill & if dist(q,q_0)\leq d* \\
+      \hfill d*\zeta dist(q,q_0) -\frac{1}{2}\zeta d^2 \hfill &  if dist(q,q_0) > d* \\
+  \end{cases}
+\end{equation}
+
+Where $\zeta$ is a scaling factor, dist(x,y) is the distance between x and y, q is current position, $q_0$ is goal position, and d* is the distance between the conical and parabolic well.
+
+The repulsive field is set to increase quadratically based on how close the robot is to each obstacle. For a manipulator the end effector cannot be the only chosen point looked at in terms of collision. While the goal would only need to look at the end effector for the attractive field, since that is the only part of the arm desired to be at that goal. For the obstacles no point on the link is desired to touch the obstacle. This means the whole arm, not just the end effector must be checked for collision with the obstacle. A way to do this is by calculating which point on the manipulator is closest to the obstacle and use that distance to calculate the repulsive field. The result of this is shown in equation \ref{eq:repel}.
+
+\begin{equation}
+\label{eq:repel}
+ U_{repel}(q)  =
+  \begin{cases} 
+      \hfill \frac{1}{2}\zeta (\frac{1}{P(q)} - \frac{1}{P_0})^2    \hfill & if P(q) \leq P_0 \\
+      \hfill 0 &  if P(q) > P_0 \\
+  \end{cases}
+\end{equation}
+Where $\zeta$ is a tuning parameter, P{q} is the distance from the closest point on the robot to the obstacle, and $P_0$ is the distance at which the obstacle should no longer effect the cost.
+
+To calculate the overall cost function the attractive and repulsive fields are added resulting in the overall cost function. This becomes an optimization problem and can be solved using optimization methods. The most widely used of these for the path planning problem is the gradient descent algorithm. 
+
+The biggest problem with using potential fields is the local minimum problem. As gradient decent, or another algorithm for solving the path based on a potential fields problem, travels through it can get stuck in a local minimum, where no points around it are cheaper than its current yet it is not at the goal. There are a number of methods to fix this problem, such as moving away in a randomized direction and then continuing with the algorithm. 
+
+
+\subsection{Graph Search}
+The graph search method of path planning works by finding a minimal path between a start and end position given a set of nodes. Each of these nodes represents a different state of the object the path planning is done for. For example the manipulator in this project a node is a set of angles at a given orientation of the arm. The connection cost between each of these nodes must also be known, often calculated by distance. Nodes can either be calculated as the search algorithm is running or generated before searching. The latter becomes impractical for problems with a high number states and typically nodes are calculated while searching. There are many different algorithms based on this method some of which are described below.
+
+\section{Dijkstra's Algorithm}
+Dijkstra's algorithm is a search method which is guaranteed to find the optional path. To do this it starts at the start node then looks at all of the neighbors. It saves all of the neighbors of the start node and records the cost to get there. It then looks at the least cost of the saved nodes, removes it from the saved set, and saves all of its neighbors. This is repeated until the goal is selected as the point with the least cost.. If at any point a node is found to have a cheaper cost when reached through a different set of neighbors the new lower cost is saved as the cost to node. When the goal is found the cost to all nodes from the start to end have their costs known. The optimal path can then be constructed by moving backwards from the found end node. While this is guaranteed to find the least cost path between start and end this algorithm also looks at a large amount of unnecessary nodes as it looks at neighbors in all directions. This algorithm is accurate but inefficient. 
+
+\section{Greedy Algorithm}
+On the opposite end of the speed versus accuracy spectrum is the Greedy Algorithm. It works by beginning at the start node and looking at the neighboring nodes. It then moves to the neighbor with the least cost and throws out all of the others. It keeps doing this until the end node is reached. This method creates the optimal path in the optimal amount of time given a very direct path is the optimal solution.  As this is often not the case the greedy algorithm is not a practical search algorithm.
+
+\section{A*}
+The A* method follows the same steps as Dijkstra's algorithm where is saves all of the neighbors of the node it is currently looking at. Unlike in Dijkstra's algorithm the cost is calculated a function of both the cost to reach the node and an estimate of the cost to the distance. This means the cost is more for nodes going away from the goal and less for the nodes towards the goal. This significantly reduces the number of nodes that are looked at as when tuned properly only likely nodes will be looked at. The A* algorithm provides a balance between accuracy and time as it only looks at nodes it views as potential candidates for reaching the goal quickly. If tuned correctly A* will return the optimal path. 
